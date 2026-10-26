@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const money_controller_js_1 = require("../controllers/money.controller.js");
+const auth_middleware_js_1 = require("../middleware/auth.middleware.js");
+const router = (0, express_1.Router)();
+router.use(auth_middleware_js_1.authMiddleware);
+router.get('/overview', money_controller_js_1.MoneyController.getOverview);
+router.get('/safe-to-spend', money_controller_js_1.MoneyController.getSafeToSpend);
+router.get('/health', money_controller_js_1.MoneyController.getHealthScore);
+router.get('/runway', money_controller_js_1.MoneyController.getRunway);
+router.get('/forecast', money_controller_js_1.MoneyController.getForecast);
+exports.default = router;
